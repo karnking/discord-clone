@@ -85,7 +85,6 @@ export const InitialModal = () => {
                         <DialogFooter className="bg-gray-100 px-6 py-4">
                             <Button variant={'primary'} disabled={isLoading}>Create</Button>
                         </DialogFooter>
-                        <UploadButton></UploadButton>
                     </form>
                 </Form>
             </DialogContent>
