@@ -14,7 +14,7 @@ export const FileUpload = ({ onChange, value, endpoint }: FileUploadProps) => {
     if(value && fileType !=="pdf"){
         return (
             <div className="relative h-20 w-20">
-                <Image fill src={value} alt='upload' className="rounded-half" />
+                <Image fill src={value} alt='upload' className="rounded-full" />
             </div>
         )
     }
