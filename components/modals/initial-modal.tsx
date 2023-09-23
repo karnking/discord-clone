@@ -57,8 +57,8 @@ export const InitialModal = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.post("/api/servers", values);
-
+      // await axios.post("/api/servers", values);
+      console.log(values)
       form.reset();
       router.refresh();
       window.location.reload();
@@ -86,7 +86,7 @@ export const InitialModal = () => {
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <div className="space-y-8 px-6">
               <div className="flex items-center justify-center text-center">
-                <FormField
+                {/* <FormField
                   control={form.control}
                   name="imageUrl"
                   render={({ field }) => (
@@ -99,8 +99,8 @@ export const InitialModal = () => {
                         />
                       </FormControl>
                     </FormItem>
-                  )}
-                />
+                  )} */}
+                {/* /> */}
               </div>
 
               <FormField
