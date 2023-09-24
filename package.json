@@ -20,7 +20,7 @@
     "@types/node": "20.6.0",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
-    "@uploadthing/react": "^5.6.1",
+    "@uploadthing/react": "^5.3.0",
     "autoprefixer": "10.4.15",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
@@ -38,7 +38,7 @@
     "tailwindcss": "3.3.3",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "5.2.2",
-    "uploadthing": "^5.6.1",
+    "uploadthing": "^5.3.3",
     "zod": "^3.22.2"
   },
   "devDependencies": {
