@@ -46,9 +46,8 @@ const InviteCodePage = async({
             }
         }
     })
-    return (
-        <div>
-            Hello invite
-        </div>
-    )
+    if(server) {
+        return redirect(`/servers/${server.id}`)
+    }
+    return null;
 }
