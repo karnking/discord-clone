@@ -1,6 +1,6 @@
 "use client";
-
-import { Check, MoreVertical, Shield, ShieldAlert, ShieldCheck, ShieldQuestion } from "lucide-react";
+import qs from "query-string"
+import { Check, Gavel, Loader2, MoreVertical, Shield, ShieldAlert, ShieldCheck, ShieldQuestion } from "lucide-react";
 import { useState } from "react";
 
 import {
@@ -11,6 +11,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
+import { MemberRole } from "@prisma/client";
 import { useModal } from "@/hooks/use-modal-store";
 import { ServerWithMembersWithProfile } from "@/types";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -26,6 +27,8 @@ import {
   DropdownMenuTrigger,
   DropdownMenuSubTrigger
 } from "@/components/ui/dropdown-menu"
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 
 const roleIconMap = {
@@ -34,11 +37,50 @@ const roleIconMap = {
   "ADMIN": <ShieldAlert className="h-4 w-4 text-rose-500" />
 }
 export const MembersModal = () => {
+  const router = useRouter()
   const { onOpen, isOpen, onClose, type, data } = useModal();
   const [loadingId,setLoadingId] = useState("")
   
   const isModalOpen = isOpen && type === "members"
   const { server } = data as { server: ServerWithMembersWithProfile };
+
+  const onRoleChange = async(memberId:string,role: MemberRole) => {
+    try{
+      setLoadingId(memberId)
+      const url = qs.stringifyUrl({
+        url: `/api/members/${memberId}`,
+        query: {
+          serverId: server?.id,
+        }
+      })
+      const response = await axios.patch(url,{role});
+      router.refresh()
+      onOpen("members",{server:response.data})
+    }catch(error){
+      console.log(error)
+    }finally{
+      setLoadingId("")
+    }
+  }
+
+  const onKick = async(memberId:string) => {
+    try{
+      setLoadingId(memberId)
+      const url = qs.stringifyUrl({
+        url: `/api/members/${memberId}`,
+        query: {
+          serverId: server?.id,
+        }
+      })
+      const response = await axios.patch(url,{role});
+      router.refresh()
+      onOpen("members",{server:response.data})
+    }catch(error){
+      console.log(error)
+    }finally{
+      setLoadingId("")
+    }
+  }
 
   return (
     <Dialog open={isModalOpen} onOpenChange={onClose}>
@@ -76,27 +118,35 @@ export const MembersModal = () => {
                         </DropdownMenuSubTrigger>
                         <DropdownMenuPortal>
                           <DropdownMenuSubContent>
-                            <DropdownMenuItem>
+                            <DropdownMenuItem onClick={()=>onRoleChange(member.id,"GUEST")}>
                               <Shield className="h-4 w-4 mr-2"/>
                               Guest
                               {member.role === "GUEST" && (
                                 <Check className="h-4 w-3 ml-auto" />
                               )}
                             </DropdownMenuItem>
-                            <DropdownMenuItem>
+                            <DropdownMenuItem onClick={()=>onRoleChange(member.id,"MODERATOR")}>
                               <ShieldCheck className="h-4 w-4 mr-2"/>
                               Moderator
                               {member.role === "MODERATOR" && (
-                                <Check className="h-4 w-3 ml-auto" />
+                                <Check className="h-4 w-4 ml-auto" />
                               )}
                             </DropdownMenuItem>
                           </DropdownMenuSubContent>
                         </DropdownMenuPortal>
                       </DropdownMenuSub>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem className="text-red-500" onClick={()=>onKick(member.id)}>
+                        <Gavel className="h-4 w-4 mr-2"/>
+                        Kick
+                      </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
               )} 
+              {loadingId === member.id && (
+                <Loader2 className="animate-spin text-zinc-500 ml-auto w-4 h-4"/>
+              )}
             </div>
           ))}
         </ScrollArea>
