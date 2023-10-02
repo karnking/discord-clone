@@ -3,7 +3,7 @@
 import { ServerWithMembersWithProfile } from "@/types"
 import { MemberRole } from "@prisma/client";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { ChevronDown, PlusCircle, Settings, Trash, UserIcon, UserPlus } from "lucide-react";
+import { ChevronDown, LogOut, PlusCircle, Settings, Trash, UserIcon, UserPlus } from "lucide-react";
 import { DropdownMenuSeparator } from "@radix-ui/react-dropdown-menu";
 import { useModal } from "@/hooks/use-modal-store";
 
@@ -85,8 +85,8 @@ export const ServerHeader = ({
                         <DropdownMenuItem
                             className="px-3 py-2 text-rose-500 text-sm cursor-pointer"
                         >
-                            Delete Server
-                            <Trash className="h-4 w-4 ml-auto"/>
+                            Leave Server
+                            <LogOut className="h-4 w-4 ml-auto"/>
                         </DropdownMenuItem>
                     )}
             </DropdownMenuContent>
