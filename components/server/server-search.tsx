@@ -3,6 +3,8 @@
 import { Search } from "lucide-react";
 import { useState } from "react";
 
+import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
+
 interface ServerSearchProps {
     data: {
         label: string,
@@ -22,7 +24,7 @@ export const ServerSearch = (
 
     return (
         <>
-            <button className="group px-2 py-2 rounded-md flex items-center gap-x-2 w-full hover:bg-zinc-700/10 dark:hover:bg-zinc-700/50 transition" onClick={()=>setOpen(true)}
+            <button className="group px-2 py-2 rounded-md flex items-center gap-x-2 w-full hover:bg-zinc-700/10 dark:hover:bg-zinc-700/50 transition" onClick={()=>setOpen(true)}>
                 <Search className="w-4 h-4 txt-zinc-500 dark:text-zinc-400"/>
                 <p className="font-semibold text-sm text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition">
                     Search
@@ -33,6 +35,29 @@ export const ServerSearch = (
                     <span className="text-xs">⌘</span>+ K
                 </kbd>
             </button>
+            <CommandDialog open={open} onOpenChange={setOpen}>
+                <CommandInput placeholder="Search all channels and members"/>
+                <CommandList>
+                    <CommandEmpty>
+                        No Results found
+                    </CommandEmpty>
+                    {data.map(({label,type,data})=>{
+                        if(!data?.length) return null;
+                        return (
+                            <CommandGroup key={label} heading={label}>
+                                {data?.map(({id,icon,name})=>{
+                                    return (
+                                        <CommandItem key={id}>
+                                            {icon}
+                                            <span>{name}</span>
+                                        </CommandItem>
+                                    )
+                                })}
+                            </CommandGroup>
+                        )
+                    })}
+                </CommandList>
+            </CommandDialog>
         </>
     )
 }
