@@ -114,6 +114,7 @@ export const ServerSidebar = async ({
                         ]}
                     />
                 </div>
+                <div></div>
             </ScrollArea>
         </div>
     )
