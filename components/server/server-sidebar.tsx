@@ -114,8 +114,17 @@ export const ServerSidebar = async ({
                         ]}
                     />
                 </div>
+                <h2>Text Channels</h2>
                 <div>
                     {textChannels?.map((channel)=>(
+                        <div key={channel.id}>
+                            {channel.name}
+                        </div>
+                    ))}
+                </div>
+                <h2>Audio channels</h2>
+                <div>
+                    {audioChannels?.map((channel)=>(
                         <div key={channel.id}>
                             {channel.name}
                         </div>
