@@ -114,7 +114,13 @@ export const ServerSidebar = async ({
                         ]}
                     />
                 </div>
-                <div></div>
+                <div>
+                    {textChannels?.map((channel)=>(
+                        <div key={channel.id}>
+                            {channel.name}
+                        </div>
+                    ))}
+                </div>
             </ScrollArea>
         </div>
     )
