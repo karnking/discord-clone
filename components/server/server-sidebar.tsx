@@ -5,9 +5,12 @@ import { Hash, Mic, ShieldAlert, ShieldCheck, Video } from "lucide-react"
 import { currentProfile } from "@/lib/current-profile"
 import { db } from "@/lib/db"
 
+import { Separator } from "@/components/ui/separator"
 import { ServerHeader } from "./server-header"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { ServerSearch } from "./server-search"
+import { ServerSection } from "./server-section"
+import { ServerChannel } from "./server-channel"
 
 
 interface ServerSidebarProps {
@@ -114,22 +117,25 @@ export const ServerSidebar = async ({
                         ]}
                     />
                 </div>
-                <h2>Text Channels</h2>
-                <div>
-                    {textChannels?.map((channel)=>(
-                        <div key={channel.id}>
-                            {channel.name}
-                        </div>
-                    ))}
-                </div>
-                <h2>Audio channels</h2>
-                <div>
-                    {audioChannels?.map((channel)=>(
-                        <div key={channel.id}>
-                            {channel.name}
-                        </div>
-                    ))}
-                </div>
+                <Separator className="bg-zinc-200 darkLbg-zinc-700 rounded-md my-2"/>
+                {!!textChannels?.length && (
+                    <div className="mb-2">
+                        <ServerSection 
+                            sectionType="channels"
+                            channelType={ChannelType.TEXT}
+                            role={role}
+                            label="Text Channels"
+                        />
+                        {textChannels.map((channel)=>(
+                            <ServerChannel 
+                                key={channel.id}  
+                                channel={channel}
+                                role={role}
+                                server={server}
+                            />
+                        ))}
+                    </div>
+                )}
             </ScrollArea>
         </div>
     )
