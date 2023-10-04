@@ -136,6 +136,57 @@ export const ServerSidebar = async ({
                         ))}
                     </div>
                 )}
+                {!!audioChannels?.length && (
+                    <div className="mb-2">
+                        <ServerSection 
+                            sectionType="channels"
+                            channelType={ChannelType.AUDIO}
+                            role={role}
+                            label="Voice Channels"
+                        />
+                        {audioChannels.map((channel)=>(
+                            <ServerChannel 
+                                key={channel.id}  
+                                channel={channel}
+                                role={role}
+                                server={server}
+                            />
+                        ))}
+                    </div>
+                )}
+                {!!videoChannels?.length && (
+                    <div className="mb-2">
+                        <ServerSection 
+                            sectionType="channels"
+                            channelType={ChannelType.VIDEO}
+                            role={role}
+                            label="Video Channels"
+                        />
+                        {videoChannels.map((channel)=>(
+                            <ServerChannel 
+                                key={channel.id}  
+                                channel={channel}
+                                role={role}
+                                server={server}
+                            />
+                        ))}
+                    </div>
+                )}
+                {!!members?.length && (
+                    <div className="mb-2">
+                        <ServerSection 
+                            sectionType="members"
+                            role={role}
+                            label="Members"
+                            server={server}
+                        />
+                        {members.map((member)=>(
+                            <ServerMember>
+                                
+                            </ServerMember>
+                        ))}
+                    </div>
+                )}
             </ScrollArea>
         </div>
     )
