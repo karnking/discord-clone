@@ -92,7 +92,7 @@ export async function PATCH(
                         where:{
                             id: params.channelId,
                             NOT: {
-                                name: 'general'
+                                name: 'general
                             }
                         },
                         data: {
