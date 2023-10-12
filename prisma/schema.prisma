@@ -101,6 +101,7 @@ model Channel {
 model Message {
   id String @id @default(uuid()) @map("_id") 
   content String 
+  
   fileUrl String?
 
   memberId String
