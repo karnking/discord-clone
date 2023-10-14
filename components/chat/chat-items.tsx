@@ -72,6 +72,16 @@ export const ChatItem = ({
         console.log(values)
     }
 
+    useEffect(()=>{
+        const handleKeyDown = (event:any) => {
+            if(event.key==="Escape" || event.keyCode === 27 ){
+                setIsEditing(false)
+            }
+            window.addEventListener('keyDown',handleKeyDown)
+            return () => window.removeEventListener("keyDown",handleKeyDown) 
+        }
+    },[])
+
     useEffect(() => {
         form.reset({
             content: content
