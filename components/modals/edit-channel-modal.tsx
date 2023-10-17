@@ -80,8 +80,8 @@ export const EditChannellModal = () => {
       })
       await axios.patch(url, values);
       form.reset();
-      router.refresh();
       onClose()
+      router.refresh();
     } catch (error) {
       console.log(error);
     }
