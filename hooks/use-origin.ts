@@ -12,3 +12,7 @@ export const useOrigin = () => {
     }
     return origin;
 }
+const name : object = {
+    name: "karan",
+    
+}
