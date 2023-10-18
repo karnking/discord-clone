@@ -11,7 +11,6 @@ interface FileUploadProps {
   endpoint: "messageFile" | "serverImage"
 }
 
-// @ts-ignore
 export const FileUpload = ({
   onChange,
   value,
