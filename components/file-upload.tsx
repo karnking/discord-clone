@@ -5,17 +5,18 @@ import Image from "next/image";
 
 import { UploadDropzone } from "@/lib/uploadthing";
 
-// interface FileUploadProps {
-//   onChange: (url?: string) => void;
-//   value: string;
-//   endpoint: "messageFile" | "serverImage"
-// }
+interface FileUploadProps {
+  onChange: (url?: string) => void;
+  value: string;
+  endpoint: "messageFile" | "serverImage"
+}
 
+// @ts-ignore
 export const FileUpload = ({
   onChange,
   value,
   endpoint
-}:{onChange:any,value:any,endpoint:any}) => {
+}:FileUploadProps) => {
   const fileType = value?.split(".").pop();
 
   if (value && fileType !== "pdf") {
