@@ -32,7 +32,7 @@ export const LeaveServerModal = () => {
 
       onClose();
       router.refresh();
-      router.push("/");
+      router.push("/servers");
     } catch (error) {
       console.log(error);
     } finally {

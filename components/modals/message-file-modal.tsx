@@ -1,7 +1,7 @@
 "use client";
 
 import axios from "axios";
-import qs from "query-string"
+import qs from "query-string";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -32,11 +32,11 @@ const formSchema = z.object({
 });
 
 export const MessageFileModal = () => {
-  const {isOpen,onClose,type,data} = useModal()
+  const { isOpen, onClose, type, data } = useModal();
   const router = useRouter();
 
-  const isModalOpen = isOpen && type==="messageFile"
-  const {apiUrl,query} = data
+  const isModalOpen = isOpen && type === "messageFile";
+  const { apiUrl, query } = data;
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -59,15 +59,18 @@ export const MessageFileModal = () => {
         query,
       });
 
-      await axios.post(url, {...values,content: values.fileUrl});
+      await axios.post(url, {
+        ...values,
+        content: values.fileUrl,
+      });
+
       form.reset();
       router.refresh();
-      onClose()
+      handleClose();
     } catch (error) {
       console.log(error);
     }
   }
-
 
   return (
     <Dialog open={isModalOpen} onOpenChange={handleClose}>
