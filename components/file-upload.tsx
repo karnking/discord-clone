@@ -9,8 +9,6 @@ interface FileUploadProps {
   endpoint: "messageFile" | "serverImage"
 }
 
-//@ts-nocheck
-//@ts-ignore
 export const FileUpload = ({
   onChange,
   value,
@@ -62,12 +60,8 @@ export const FileUpload = ({
   }
   
   return (
-    <
-    //@ts-ignore 
-    UploadDropzone
-    //@ts-ignore
+    <UploadDropzone
     endpoint={endpoint}
-    //@ts-ignore
     onClientUploadComplete={(res) => {
       onChange(res?.[0].url);
       }}
