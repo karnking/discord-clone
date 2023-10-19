@@ -1,6 +1,6 @@
 # Discord Clone
 
-Live at : https://discord-clone-1.up.railway.app
+Live at : https://discord-clone-1.up.railway.app <br/>
 This is a repository for Fullstack Discord Clone: Next.js 13, React, Socket.io, Prisma, Tailwind, MongoDB
 This solo full-stack project is a real-time communication platform with features like instant messaging, attachment sharing, message editing, 1:1 calls, member management, unique invite links, and a sleek UI. It uses Socket.io for real-time communication, Prisma as the ORM, MongoDB via Atlas for data storage, and Clerk for authentication. The project offers light and dark modes, infinite message loading, and a Websocket fallback for reliability.
 
