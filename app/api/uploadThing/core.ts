@@ -18,4 +18,4 @@ export const ourFileRouter = {
     .onUploadComplete(() => {})
 } satisfies FileRouter;
  
-export type OurFileRouter = typeof ourFileRouter;
+export type OurFileRouter = typeof ourFileRouter
