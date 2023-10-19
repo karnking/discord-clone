@@ -6,7 +6,7 @@ const f = createUploadthing();
 const handleAuth = () => {
   const { userId } = auth();
   if (!userId) throw new Error("Unauthorized");
-  return { userId: userId };
+  return { userId };
 }
 
 export const ourFileRouter = {
@@ -18,4 +18,4 @@ export const ourFileRouter = {
     .onUploadComplete(() => {})
 } satisfies FileRouter;
  
-export type OurFileRouter = typeof ourFileRouter
+export type OurFileRouter = typeof ourFileRouter;
