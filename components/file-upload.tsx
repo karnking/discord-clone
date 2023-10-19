@@ -10,6 +10,7 @@ interface FileUploadProps {
 }
 
 //@ts-nocheck
+//@ts-ignore
 export const FileUpload = ({
   onChange,
   value,
@@ -61,8 +62,12 @@ export const FileUpload = ({
   }
   
   return (
-    <UploadDropzone
+    <
+    //@ts-ignore 
+    UploadDropzone
+    //@ts-ignore
     endpoint={endpoint}
+    //@ts-ignore
     onClientUploadComplete={(res) => {
       onChange(res?.[0].url);
       }}
