@@ -15,7 +15,7 @@ const font = Open_Sans({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Discord App',
   description: 'A Discord Clone thats supports instant messaging, attachment sharing, message editing, 1:1 calls, member management, unique invite links etc',
-  metadataBase: new URL("https://discord-clone-1.up.railway.app")
+  metadataBase: new URL("https://discord-clone-1.up.railway.app"),
   openGraph: {
     title: "Discord Clone",
     description: "A Discrod Clone built using Next.js",
