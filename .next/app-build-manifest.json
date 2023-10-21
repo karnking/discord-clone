@@ -31,6 +31,12 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/(main)/(routes)/servers/page.js"
+    ],
+    "/(setup)/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(setup)/page.css",
+      "static/chunks/app/(setup)/page.js"
     ]
   }
 }
