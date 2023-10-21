@@ -1,8 +1,6 @@
 {
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/(setup)/page": "app/(setup)/page.js",
-  "/api/uploadthing/route": "app/api/uploadthing/route.js",
   "/api/messages/route": "app/api/messages/route.js",
-  "/(main)/(routes)/servers/[serverId]/page": "app/(main)/(routes)/servers/[serverId]/page.js",
+  "/(main)/(routes)/servers/page": "app/(main)/(routes)/servers/page.js",
   "/(main)/(routes)/servers/[serverId]/channels/[channelId]/page": "app/(main)/(routes)/servers/[serverId]/channels/[channelId]/page.js"
 }
