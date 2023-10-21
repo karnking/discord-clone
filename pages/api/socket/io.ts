@@ -15,7 +15,9 @@ const ioHandler = (req: NextApiRequest, res: NextApiResponseServerIo) => {
     const path = "/api/socket/io";
     const httpServer: NetServer = res.socket.server as any;
     const io = new ServerIO(httpServer, {
-      path: path
+      path: path,
+      // @ts-ignore
+      addTrailingSlash: false,
     });
     res.socket.server.io = io;
   }

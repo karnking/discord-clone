@@ -20,7 +20,7 @@ export async function POST(req: Request) {
         name,
         imageUrl,
         inviteCode: uuidv4(),
-        channel: {
+        channels: {
           create: [
             { name: "general", profileId: profile.id }
           ]
@@ -32,7 +32,7 @@ export async function POST(req: Request) {
         }
       }
     });
-    console.log(server)
+
     return NextResponse.json(server);
   } catch (error) {
     console.log("[SERVERS_POST]", error);

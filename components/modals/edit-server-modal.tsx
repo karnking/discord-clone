@@ -4,6 +4,7 @@ import axios from "axios";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 
 import {
   Dialog,
@@ -26,7 +27,6 @@ import { Button } from "@/components/ui/button";
 import { FileUpload } from "@/components/file-upload";
 import { useRouter } from "next/navigation";
 import { useModal } from "@/hooks/use-modal-store";
-import { useEffect } from "react";
 
 const formSchema = z.object({
   name: z.string().min(1, {
@@ -37,12 +37,12 @@ const formSchema = z.object({
   })
 });
 
-export const EditServerlModal = () => {
-  const {isOpen,onClose,type, data} = useModal();
+export const EditServerModal = () => {
+  const { isOpen, onClose, type, data } = useModal();
   const router = useRouter();
 
-  const isModalOpen = isOpen && type==="editServer"
-  const {server} = data;
+  const isModalOpen = isOpen && type === "editServer";
+  const { server } = data;
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -51,28 +51,33 @@ export const EditServerlModal = () => {
       imageUrl: "",
     }
   });
-  useEffect(()=>{
-    if(server) {
-      form.setValue("name",server.name)
-      form.setValue("imageUrl",server.imageUrl)
+
+  useEffect(() => {
+    if (server) {
+      form.setValue("name", server.name);
+      form.setValue("imageUrl", server.imageUrl);
     }
-  },[server,form])
+  }, [server, form]);
+
   const isLoading = form.formState.isSubmitting;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.patch(`/api/servers/${server?.id}`, values);
+
       form.reset();
       router.refresh();
-      onClose()
+      onClose();
     } catch (error) {
       console.log(error);
     }
   }
-  const handleClose = () =>{ 
-      form.reset();
-      onClose()
+
+  const handleClose = () => {
+    form.reset();
+    onClose();
   }
+
   return (
     <Dialog open={isModalOpen} onOpenChange={handleClose}>
       <DialogContent className="bg-white text-black p-0 overflow-hidden">

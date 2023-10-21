@@ -36,11 +36,11 @@ const formSchema = z.object({
   })
 });
 
-export const CreateServerlModal = () => {
-  const {isOpen,onClose,type} = useModal();
+export const CreateServerModal = () => {
+  const { isOpen, onClose, type } = useModal();
   const router = useRouter();
 
-  const isModalOpen = isOpen && type==="createServer"
+  const isModalOpen = isOpen && type === "createServer";
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -55,17 +55,20 @@ export const CreateServerlModal = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.post("/api/servers", values);
+
       form.reset();
       router.refresh();
-      onClose()
+      onClose();
     } catch (error) {
       console.log(error);
     }
   }
-  const handleClose = () =>{ 
-      form.reset();
-      onClose()
+
+  const handleClose = () => {
+    form.reset();
+    onClose();
   }
+
   return (
     <Dialog open={isModalOpen} onOpenChange={handleClose}>
       <DialogContent className="bg-white text-black p-0 overflow-hidden">

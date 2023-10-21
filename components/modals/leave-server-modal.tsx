@@ -32,7 +32,7 @@ export const LeaveServerModal = () => {
 
       onClose();
       router.refresh();
-      router.push("/servers");
+      router.push("/");
     } catch (error) {
       console.log(error);
     } finally {
@@ -48,7 +48,7 @@ export const LeaveServerModal = () => {
             Leave Server
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
-            Are you sure you want to leave <span className="font-semibold text-indigo-500">{server?.name}</span> ?
+            Are you sure you want to leave <span className="font-semibold text-indigo-500">{server?.name}</span>?
           </DialogDescription>
         </DialogHeader>
         <DialogFooter className="bg-gray-100 px-6 py-4">

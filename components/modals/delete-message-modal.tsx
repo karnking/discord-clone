@@ -1,6 +1,6 @@
 "use client";
 
-import qs from "query-string"
+import qs from "query-string";
 import axios from "axios";
 import { useState } from "react";
 
@@ -20,6 +20,7 @@ export const DeleteMessageModal = () => {
 
   const isModalOpen = isOpen && type === "deleteMessage";
   const { apiUrl, query } = data;
+
   const [isLoading, setIsLoading] = useState(false);
 
   const onClick = async () => {
@@ -27,9 +28,11 @@ export const DeleteMessageModal = () => {
       setIsLoading(true);
       const url = qs.stringifyUrl({
         url: apiUrl || "",
-        query
-      })
+        query,
+      });
+
       await axios.delete(url);
+
       onClose();
     } catch (error) {
       console.log(error);
@@ -46,7 +49,7 @@ export const DeleteMessageModal = () => {
             Delete Message
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
-            Are you sure you want to do this ?<br/> 
+            Are you sure you want to do this? <br />
             The message will be permanently deleted.
           </DialogDescription>
         </DialogHeader>
