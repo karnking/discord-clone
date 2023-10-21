@@ -1,3 +1,37 @@
 {
-  "pages": {}
+  "pages": {
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+    ],
+    "/(setup)/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(setup)/page.css",
+      "static/chunks/app/(setup)/page.js"
+    ],
+    "/(main)/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(main)/layout.js"
+    ],
+    "/(main)/(routes)/servers/[serverId]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(main)/(routes)/servers/[serverId]/page.js"
+    ],
+    "/(main)/(routes)/servers/[serverId]/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(main)/(routes)/servers/[serverId]/layout.js"
+    ],
+    "/(main)/(routes)/servers/[serverId]/channels/[channelId]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(main)/(routes)/servers/[serverId]/channels/[channelId]/page.css",
+      "static/chunks/app/(main)/(routes)/servers/[serverId]/channels/[channelId]/page.js"
+    ]
+  }
 }
